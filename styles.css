@@ -1,0 +1,123 @@
+/* Dark neon + glossy Wix Vibe styling */
+:root{
+  --bg:#0b0f14;
+  --panel:#0e141b;
+  --glass:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.14);
+  --text:#e6f1ff;
+  --muted:#a8b3c7;
+  --neon:#00ffa3;
+  --neon2:#39c6ff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:"Madefor Text", "Madefor", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(57,198,255,0.18), transparent 60%),
+              radial-gradient(1000px 600px at 90% 10%, rgba(0,255,163,0.14), transparent 60%),
+              var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* Glass */
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border:1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius:16px;
+}
+
+/* Header */
+header.nav{
+  position:fixed; inset:16px 16px auto 16px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 12px; z-index:50;
+}
+header .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+header .logo em{font-weight:800; color:var(--neon)}
+header .logo .orb{width:14px; height:14px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--neon), var(--neon2) 60%, transparent 65%); box-shadow:0 0 24px var(--neon)}
+header nav{display:flex; align-items:center; gap:12px}
+a{color:var(--text); text-decoration:none; opacity:.9}
+a:hover{opacity:1}
+.btn{padding:10px 14px; border-radius:12px; border:1px solid var(--border); display:inline-flex; align-items:center; gap:8px}
+.btn.primary{border-color:transparent; background: linear-gradient(135deg, var(--neon), var(--neon2)); color:#071014; font-weight:800; box-shadow:0 0 30px rgba(0,255,163,.25)}
+.btn.outline{border-color:var(--neon); color:var(--neon)}
+.btn.ghost{background:transparent; border-color:var(--border)}
+.btn.big{padding:14px 18px; font-size:1.05rem}
+
+/* Hero */
+.section{padding:100px 20px; max-width:1200px; margin:0 auto}
+.hero{padding-top:140px; position:relative; min-height:92vh; display:grid; place-items:center; text-align:center}
+.bg-ring{
+  position:absolute; inset:-20vmin -20vmin auto -20vmin; height:80vmin; width:80vmin; margin:auto;
+  background:conic-gradient(from 0deg, var(--neon), var(--neon2), var(--neon), var(--neon2));
+  border-radius:50%; filter:blur(30px) saturate(160%); opacity:.18; animation:gradientShift 18s linear infinite;
+}
+@keyframes gradientShift{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.hero .glow span{color:var(--neon)}
+h1{font-size:clamp(2.2rem, 4vw, 4rem); margin:0 0 10px; line-height:1.05}
+.lead{color:var(--muted); max-width:750px; margin:0 auto 22px; font-size:clamp(1rem, 1.8vw, 1.2rem)}
+.stats{display:flex; gap:14px; justify-content:center; margin-top:22px; padding:10px 14px}
+.stats .num{font-size:1.6rem; font-weight:900}
+.stats .unit{margin-left:4px; color:var(--neon)}
+.stats small{display:block; color:var(--muted)}
+
+/* Showcase panels with parallax */
+.showcase{display:grid; gap:18px}
+.panel{position:relative; padding:40px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid var(--border); overflow:hidden}
+.panel-title{margin:0 0 6px}
+.panel::after{
+  content:""; position:absolute; inset:-40%; background:radial-gradient(600px 300px at var(--mx,70%) var(--my,30%), rgba(0,255,163,.25), transparent 60%);
+  pointer-events:none; transition:opacity .25s ease; opacity:.6;
+}
+
+/* Pricing */
+.pricing .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{padding:28px; position:relative; overflow:hidden}
+.card.featured{transform:translateY(-6px); box-shadow:0 8px 60px rgba(0,255,163,.18)}
+.card .price{font-size:2rem; font-weight:900; margin:8px 0 16px; color:var(--neon)}
+.card ul{margin:0 0 18px 18px; color:var(--muted)}
+.badge{position:absolute; right:16px; top:16px; background:linear-gradient(135deg, var(--neon), var(--neon2)); color:#081015; padding:6px 10px; border-radius:999px; font-size:.8rem; font-weight:800}
+
+/* Testimonials carousel */
+.testimonials .carousel{position:relative; padding:24px}
+.slide{display:none; text-align:center}
+.slide.active{display:block}
+blockquote{font-size:1.2rem; margin:0 0 6px}
+cite{color:var(--muted)}
+
+/* Knowledge hub */
+.hub{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.holo{
+  display:grid; place-items:center; padding:28px; border-radius:16px; text-transform:uppercase; letter-spacing:.4px; font-weight:800;
+  border:1px solid var(--border);
+  background:
+    radial-gradient(400px 200px at 20% 0%, rgba(57,198,255,.12), transparent 40%),
+    radial-gradient(400px 200px at 80% 100%, rgba(0,255,163,.12), transparent 40%);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.holo:hover{transform:translateY(-4px); box-shadow:0 10px 40px rgba(0,255,163,.12)}
+
+/* Marquee */
+.marquee{overflow:hidden; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin:40px 0}
+.track{display:flex; gap:40px; padding:10px 0; will-change:transform; animation:marquee 28s linear infinite}
+@keyframes marquee{from{transform:translateX(0%)}to{transform:translateX(-50%)}}
+
+/* Footer */
+.footer{margin:40px auto; padding:28px; display:grid; gap:6px; text-align:center}
+
+/* Reveal animations */
+.reveal{opacity:0; transform:translateY(16px); transition:all .6s ease}
+.reveal.visible{opacity:1; transform:none}
+
+/* Responsive */
+@media (max-width: 960px){
+  .pricing .cards{grid-template-columns:1fr}
+  header nav a{display:none}
+  header nav a.btn{display:inline-flex}
+  .hub{grid-template-columns:1fr}
+}
